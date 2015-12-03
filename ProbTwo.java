@@ -37,6 +37,7 @@ import javax.swing.JScrollBar;
 import javax.swing.DropMode;
 import javax.swing.JMenuBar;
 import javax.swing.JTextField;
+import javax.swing.JTextArea;
 
 
 public class ProbTwo extends JFrame {
@@ -85,7 +86,7 @@ public class ProbTwo extends JFrame {
 	 */
 	public void initialize() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 599, 600);
+		setBounds(100, 100, 850, 600);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -172,12 +173,20 @@ public class ProbTwo extends JFrame {
 		lblP2_14.setBounds(42, 137, 230, 14);
 		contentPane.add(lblP2_14);
 		
+		JTextArea txtrBT = new JTextArea();
+		txtrBT.setBackground(UIManager.getColor("Button.background"));
+		txtrBT.setFont(new Font("Monospaced", Font.PLAIN, 11));
+		txtrBT.setText("B1\r\nT - Fg = ma\r\nT- mg = ma\r\nT - (m2 here)(9.8) - (m2 here) a\r\nT - (m2 * 9.8 here) = 3a\r\n\r\nB2\r\nFgx - T -Ff  = ma\r\nmg Cos (angle here) - T - (0.12) Fn = ma\r\n(m1 here)(9.8) Cos (angle here) - T - (textFieldP2_coefficient)(idk this 128.32 haha ask janica) = (m2 here)a");
+		txtrBT.setBounds(53, 218, 719, 298);
+		contentPane.add(txtrBT);
+		
 		JButton btnSolve = new JButton("Solve");
 		btnSolve.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				String SangleValue = textFieldP2_Angle.getText();
 				float fAngle = Float.parseFloat(SangleValue);
+				float fToUseAngle = 90 - fAngle;
 				System.out.println("angle = " + fAngle);
 				
 				String Smass1 = textFieldP2_m1.getText();
@@ -195,14 +204,24 @@ public class ProbTwo extends JFrame {
 				String STime = textFieldP2_Time.getText();
 				float fTime = Float.parseFloat(STime);
 				System.out.println("coefficient of friction = " + fTime);
-				//float solve = (fCoefficient + fAngle + fMass1 + fMass2);
-				//System.out.printf("%.3f", solve);
 				
+				float fFn = (float) (fMass1 * 9.8 * Math.sin(Math.toRadians(fToUseAngle)));
 				
+				//System.out.println(fToUseAngle);
+				//System.out.println(Math.sin(fToUseAngle));
+				//System.out.println(fFn);
 				
+				//computations na nasa terminal
+				System.out.printf("B1\nT - Fg = ma\nT - mg = ma\nT - (%.2f)(9.8) = %.2f a", fMass2, fMass2);
+				System.out.printf("\nT - %.2f = %.2f a", (fMass2 * 9.8), fMass2);
+				System.out.printf("\n\nB2\nFgx - T - Ff = ma\nmg Cos %.0f - T - (%.2f)Fn = ma\n", fToUseAngle,fCoefficient);
+				System.out.printf("\n%.2f(9.8) Cos %.0f - T (%.2f)(%.2f) = %.2f a", fMass1, fToUseAngle, fCoefficient, fFn, fMass1);
 				
 			}
 		});
+		//set values outside
+		//compute 
+		//System.out.printf("B1\r\nT - Fg = ma\r\nT- mg = ma\r\nT - (%d)(9.8) - (m2 here) a\r\nT - (m2 * 9.8 here) = 3a\r\n\r\nB2\r\nFgx - T -Ff  = ma\r\nmg Cos (angle here) - T - (0.12) Fn = ma\r\n(m1 here)(9.8) Cos (angle here) - T - (textFieldP2_coefficient)(idk this 128.32 haha ask janica) = (m2 here)a", arg1)
 		btnSolve.setBackground(UIManager.getColor("Button.highlight"));
 		btnSolve.setBounds(42, 153, 89, 23);
 		contentPane.add(btnSolve);
@@ -227,19 +246,9 @@ public class ProbTwo extends JFrame {
 		lblSAfterBeing.setBounds(310, 137, 175, 14);
 		contentPane.add(lblSAfterBeing);
 		
-		//yung values sana mapriprint here sa loob nung text area
-		//and mag - aappear lang siya pag pinindot yung solve button
-		//pag nirun yung solve nakukuha niya naman na lahat ng values from text box so napapalitan siya ang stuff
-		// ay pero hindi pa gumagana yung kg and g
-		JTextArea txtrBT = new JTextArea();
-		txtrBT.setBackground(UIManager.getColor("Button.background"));
-		txtrBT.setFont(new Font("Monospaced", Font.PLAIN, 11));
-		txtrBT.setText("B1\r\nT - Fg = ma\r\nT- mg = ma\r\nT - (m2 here)(9.8) - (m2 here) a\r\nT - (m2 * 9.8 here) = 3a\r\n\r\nB2\r\nFgx - T -Ff  = ma\r\nmg Cos (angle here) - T - (0.12) Fn = ma\r\n");
-		txtrBT.setBounds(53, 218, 493, 288);
-		contentPane.add(txtrBT);
-
-		//GET VALUES
-		//textFieldP2_Angle.getText();
+		
+		
+	
 
 		
 		
