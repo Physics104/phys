@@ -227,26 +227,17 @@ public class ProbTwo extends JFrame {
 		lblSAfterBeing.setBounds(310, 137, 175, 14);
 		contentPane.add(lblSAfterBeing);
 		
-		JLabel lblP2_Sol1 = new JLabel("B1");
-		lblP2_Sol1.setBounds(42, 218, 29, 14);
-		contentPane.add(lblP2_Sol1);
-		
-		JLabel lblP2_Sol2 = new JLabel("T - Fg = ma");
-		lblP2_Sol2.setBounds(42, 243, 89, 14);
-		contentPane.add(lblP2_Sol2);
-		
-		JLabel lblTMg = new JLabel("T - mg = ma");
-		lblTMg.setBounds(42, 262, 89, 14);
-		contentPane.add(lblTMg);
-		
-		JLabel lblT = new JLabel("T -");
-		lblT.setBounds(42, 283, 29, 14);
-		contentPane.add(lblT);
-		
-		JLabel label = new JLabel("(" );
-		label.setBounds(70, 283, 79, 14);
-		contentPane.add(label);
-		
+		//yung values sana mapriprint here sa loob nung text area
+		//and mag - aappear lang siya pag pinindot yung solve button
+		//pag nirun yung solve nakukuha niya naman na lahat ng values from text box so napapalitan siya ang stuff
+		// ay pero hindi pa gumagana yung kg and g
+		JTextArea txtrBT = new JTextArea();
+		txtrBT.setBackground(UIManager.getColor("Button.background"));
+		txtrBT.setFont(new Font("Monospaced", Font.PLAIN, 11));
+		txtrBT.setText("B1\r\nT - Fg = ma\r\nT- mg = ma\r\nT - (m2 here)(9.8) - (m2 here) a\r\nT - (m2 * 9.8 here) = 3a\r\n\r\nB2\r\nFgx - T -Ff  = ma\r\nmg Cos (angle here) - T - (0.12) Fn = ma\r\n");
+		txtrBT.setBounds(53, 218, 493, 288);
+		contentPane.add(txtrBT);
+
 		//GET VALUES
 		//textFieldP2_Angle.getText();
 
