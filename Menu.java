@@ -105,10 +105,10 @@ public class Menu extends JFrame {
 						Menu.disappear();
 						//contentPane.setVisible(false);
 						
-						Menu menu = new Menu();
+						//Menu menu = new Menu();
 						//menu.dispose();
 						//menu.setVisible(false);
-						ProbTwo.appear();
+						ProbOne.appear();
 						}
 					}catch(Exception f){					
 			}
@@ -120,6 +120,24 @@ public class Menu extends JFrame {
 		contentPane.add(btnProblem1);
 		
 		JButton buttonProblem2 = new JButton("Problem 2");
+		buttonProblem2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try{
+					boolean value = true;
+					
+					if( value == true){
+						Menu.disappear();
+						//contentPane.setVisible(false);
+						
+						//Menu menu = new Menu();
+						//menu.dispose();
+						//menu.setVisible(false);
+						ProbTwo.appear();
+						}
+					}catch(Exception f){					
+			}
+			}
+		});
 		buttonProblem2.setHorizontalAlignment(SwingConstants.LEFT);
 		buttonProblem2.setFont(new Font("Lucida Sans Typewriter", Font.PLAIN, 13));
 		buttonProblem2.setBounds(94, 294, 120, 23);
