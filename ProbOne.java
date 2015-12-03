@@ -56,7 +56,7 @@ public class ProbOne extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ProbTwo window = new ProbTwo();
+					ProbOne window = new ProbOne();
 					window.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -68,7 +68,7 @@ public class ProbOne extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ProbTwo window = new ProbTwo();
+					ProbOne window = new ProbOne();
 					window.setVisible(false);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -91,6 +91,26 @@ public class ProbOne extends JFrame {
 		setJMenuBar(menuBar);
 		
 		JMenu mnNewMenu = new JMenu("Back");
+		mnNewMenu.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+					try{
+						boolean value = true;
+						
+						if( value == true){
+							ProbOne.disappear();
+							//contentPane.setVisible(false);
+							
+							//Menu menu = new Menu();
+							//menu.dispose();
+							//menu.setVisible(false);
+							Menu.appear();
+							}
+						}
+							catch(Exception f){					
+						}
+			}
+		});
 		menuBar.add(mnNewMenu);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -102,58 +122,58 @@ public class ProbOne extends JFrame {
 		lblProblem.setBounds(10, 11, 79, 14);
 		contentPane.add(lblProblem);
 		
-		JLabel lblP2_1 = new JLabel("Given an incline with angle of ");
-		lblP2_1.setBounds(42, 42, 169, 14);
-		contentPane.add(lblP2_1);
-		
 		textFieldP2_Angle = new JTextField();
-		textFieldP2_Angle.setText("20");
-		textFieldP2_Angle.setBounds(222, 39, 42, 20);
+		textFieldP2_Angle.setText("10");
+		textFieldP2_Angle.setBounds(42, 39, 42, 20);
 		contentPane.add(textFieldP2_Angle);
 		textFieldP2_Angle.setColumns(10);
-		
-		JLabel lblP2_3 = new JLabel("\u00B0 which has a mass of");
-		lblP2_3.setBounds(270, 42, 128, 14);
-		contentPane.add(lblP2_3);
-		
-		textFieldP2_m1 = new JTextField();
-		textFieldP2_m1.setText("14");
-		textFieldP2_m1.setBounds(400, 38, 65, 20);
-		contentPane.add(textFieldP2_m1);
-		textFieldP2_m1.setColumns(10);
 		
 		JComboBox comboBoxP2_5 = new JComboBox();
 		comboBoxP2_5.setMaximumRowCount(2);
 		comboBoxP2_5.setModel(new DefaultComboBoxModel(new String[] {"kg", "g"}));
 		comboBoxP2_5.setToolTipText("");
-		comboBoxP2_5.setBounds(475, 38, 57, 20);
+		comboBoxP2_5.setBounds(92, 39, 57, 20);
 		contentPane.add(comboBoxP2_5);
 		
-		JLabel lblP2_6 = new JLabel("placed upon. It is attached by a rope over a pulley to a mass of");
-		lblP2_6.setBounds(42, 63, 354, 14);
-		contentPane.add(lblP2_6);
+		JLabel lblP2_1 = new JLabel("box starts at rest and slides ");
+		lblP2_1.setBounds(164, 42, 198, 14);
+		contentPane.add(lblP2_1);
+		
+		textFieldP2_m1 = new JTextField();
+		textFieldP2_m1.setText("3.5");
+		textFieldP2_m1.setBounds(366, 39, 65, 20);
+		contentPane.add(textFieldP2_m1);
+		textFieldP2_m1.setColumns(10);
+		
+		JComboBox comboBoxP2_8 = new JComboBox();
+		comboBoxP2_8.setModel(new DefaultComboBoxModel(new String[] {"m", "cm"}));
+		comboBoxP2_8.setToolTipText("");
+		comboBoxP2_8.setMaximumRowCount(2);
+		comboBoxP2_8.setBounds(440, 39, 57, 20);
+		contentPane.add(comboBoxP2_8);
+		
+		JLabel lblP2_3 = new JLabel("down a ramp inclined at an angle of");
+		lblP2_3.setBounds(42, 67, 262, 14);
+		contentPane.add(lblP2_3);
 		
 		textFieldP2_m2 = new JTextField();
-		textFieldP2_m2.setText("3");
-		textFieldP2_m2.setBounds(400, 60, 65, 20);
+		textFieldP2_m2.setText("10");
+		textFieldP2_m2.setBounds(306, 64, 65, 20);
 		contentPane.add(textFieldP2_m2);
 		textFieldP2_m2.setColumns(10);
 		
-		JComboBox comboBoxP2_8 = new JComboBox();
-		comboBoxP2_8.setModel(new DefaultComboBoxModel(new String[] {"kg", "g"}));
-		comboBoxP2_8.setToolTipText("");
-		comboBoxP2_8.setMaximumRowCount(2);
-		comboBoxP2_8.setBounds(475, 60, 57, 20);
-		contentPane.add(comboBoxP2_8);
+		JLabel lblP2_6 = new JLabel("\u00B0 with the horizontal.");
+		lblP2_6.setBounds(376, 67, 159, 14);
+		contentPane.add(lblP2_6);
 		
-		JLabel lblP2_9 = new JLabel("which hangs vertically. The friction between the mass and the incline is represented");
-		lblP2_9.setBounds(42, 80, 489, 16);
+		JLabel lblP2_9 = new JLabel("If there is no friction between the ramp surface an crate, what is the");
+		lblP2_9.setBounds(42, 89, 489, 16);
 		contentPane.add(lblP2_9);
-		
-		JLabel lblP2_10 = new JLabel(" by a friction coefficient of ");
-		lblP2_10.setBounds(40, 101, 152, 14);
+	
+		JLabel lblP2_10 = new JLabel("velocity of the crate at the bottom of the ramp?");
+		lblP2_10.setBounds(42, 110, 429, 14);
 		contentPane.add(lblP2_10);
-		
+		/**
 		textFieldP2_coefficient = new JTextField();
 		textFieldP2_coefficient.setText("0.12");
 		textFieldP2_coefficient.setBounds(199, 98, 65, 20);
@@ -170,7 +190,7 @@ public class ProbOne extends JFrame {
 		
 		JLabel lblP2_14 = new JLabel("string and the speed of each object at");
 		lblP2_14.setBounds(42, 137, 230, 14);
-		contentPane.add(lblP2_14);
+		contentPane.add(lblP2_14); **/
 		
 		JButton btnSolve = new JButton("Solve");
 		btnSolve.addMouseListener(new MouseAdapter() {
@@ -216,7 +236,7 @@ public class ProbOne extends JFrame {
 		lblSolution.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblSolution.setBounds(43, 193, 73, 14);
 		contentPane.add(lblSolution);
-		
+	/*	
 		textFieldP2_Time = new JTextField();
 		textFieldP2_Time.setText("2.00");
 		textFieldP2_Time.setColumns(10);
@@ -224,9 +244,9 @@ public class ProbOne extends JFrame {
 		contentPane.add(textFieldP2_Time);
 		
 		JLabel lblSAfterBeing = new JLabel("s after being released at rest?");
-		lblSAfterBeing.setBounds(310, 137, 175, 14);
+		lblSAfterBeing.setBounds(306, 204, 175, 14);
 		contentPane.add(lblSAfterBeing);
-		
+		*/
 		JLabel lblP2_Sol1 = new JLabel("B1");
 		lblP2_Sol1.setBounds(42, 218, 29, 14);
 		contentPane.add(lblP2_Sol1);
