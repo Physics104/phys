@@ -85,7 +85,7 @@ public class ProbOne extends JFrame {
 	 */
 	public void initialize() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 599, 600);
+		setBounds(100, 100, 850, 600);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -99,7 +99,7 @@ public class ProbOne extends JFrame {
 						
 						if( value == true){
 							ProbOne.disappear();
-							//contentPane.setVisible(false);
+							contentPane.setVisible(false);
 							
 							//Menu menu = new Menu();
 							//menu.dispose();
@@ -132,11 +132,11 @@ public class ProbOne extends JFrame {
 		comboBoxP2_5.setMaximumRowCount(2);
 		comboBoxP2_5.setModel(new DefaultComboBoxModel(new String[] {"kg", "g"}));
 		comboBoxP2_5.setToolTipText("");
-		comboBoxP2_5.setBounds(92, 39, 57, 20);
+		comboBoxP2_5.setBounds(109, 39, 57, 20);
 		contentPane.add(comboBoxP2_5);
 		
 		JLabel lblP2_1 = new JLabel("box starts at rest and slides ");
-		lblP2_1.setBounds(164, 42, 198, 14);
+		lblP2_1.setBounds(176, 42, 186, 14);
 		contentPane.add(lblP2_1);
 		
 		textFieldP2_m1 = new JTextField();
