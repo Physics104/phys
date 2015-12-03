@@ -1,19 +1,52 @@
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+
 import java.awt.Font;
+
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.UIManager;
+import javax.swing.JSplitPane;
+import javax.swing.JToolBar;
 import javax.swing.JMenu;
+import javax.swing.JSeparator;
+
+import java.awt.Color;
+
+import javax.swing.JPopupMenu;
+
+import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.SystemColor;
+
+import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+import javax.swing.Box;
+import javax.swing.JTextPane;
+import javax.swing.JScrollBar;
+import javax.swing.DropMode;
 import javax.swing.JMenuBar;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
+
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintStream;
+
+import javax.swing.*;
 
 
 public class ProbTwo extends JFrame {
@@ -25,10 +58,10 @@ public class ProbTwo extends JFrame {
 	private JTextField textFieldP2_coefficient;
 	private JLabel lblP2_12;
 	private JTextField textFieldP2_Time;
-
-	/**
-	 * Launch the application.
-	 */
+	private JTextArea textArea = new JTextArea();
+	
+	private PrintStream standardOut;
+	
 	public static void appear() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -68,6 +101,27 @@ public class ProbTwo extends JFrame {
 		setJMenuBar(menuBar);
 		
 		JMenu mnNewMenu = new JMenu("Back");
+		mnNewMenu.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+					try{
+						boolean value = true;
+						
+						if( value == true){
+							ProbTwo.disappear();
+							//contentPane.setVisible(false);
+							
+							//Menu menu = new Menu();
+							//menu.dispose();
+							//menu.setVisible(false);
+							Menu.appear();
+							}
+						}
+							catch(Exception f){					
+						}
+			}
+		});
+		
 		menuBar.add(mnNewMenu);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -149,12 +203,17 @@ public class ProbTwo extends JFrame {
 		lblP2_14.setBounds(42, 137, 230, 14);
 		contentPane.add(lblP2_14);
 		
-		JTextArea txtrBT = new JTextArea();
-		txtrBT.setBackground(UIManager.getColor("Button.background"));
-		txtrBT.setFont(new Font("Monospaced", Font.PLAIN, 11));
-		txtrBT.setText("B1\r\nT - Fg = ma\r\nT- mg = ma\r\nT - (m2 here)(9.8) - (m2 here) a\r\nT - (m2 * 9.8 here) = 3a\r\n\r\nB2\r\nFgx - T -Ff  = ma\r\nmg Cos (angle here) - T - (0.12) Fn = ma\r\n(m1 here)(9.8) Cos (angle here) - T - (textFieldP2_coefficient)(idk this 128.32 haha ask janica) = (m2 here)a");
-		txtrBT.setBounds(53, 218, 719, 298);
-		contentPane.add(txtrBT);
+		JTextArea textArea = new JTextArea();
+		textArea.setBackground(UIManager.getColor("Button.background"));
+		textArea.setFont(new Font("Monospaced", Font.PLAIN, 11));
+		textArea.setBounds(53, 218, 719, 279);
+		contentPane.add(textArea);
+		
+		PrintStream printStream = new PrintStream(new CustomOutputStream(textArea));
+		standardOut = System.out;
+		System.setOut(printStream);
+		System.setErr(printStream);
+
 		
 		JButton btnSolve = new JButton("Solve");
 		btnSolve.addMouseListener(new MouseAdapter() {
@@ -179,41 +238,19 @@ public class ProbTwo extends JFrame {
 				
 				String STime = textFieldP2_Time.getText();
 				float fTime = Float.parseFloat(STime);
-				System.out.println("time = " + fTime);
+				System.out.println("coefficient of friction = " + fTime);
 				
 				float fFn = (float) (fMass1 * 9.8 * Math.sin(Math.toRadians(fToUseAngle)));
-				float fTest = (float) Math.cos(Math.toRadians(fToUseAngle));
-				System.out.println(fTest);
-				System.out.println(fCoefficient * fFn);
 				
-				float fCosStuff = fTest - (fCoefficient * fFn);
+				//System.out.println(fToUseAngle);
+				//System.out.println(Math.sin(fToUseAngle));
+				//System.out.println(fFn);
 				
-				float fB2Line4 = (float) (fMass1 * 9.8) * fTest;
-				float fB2Line5 = fB2Line4 + fCosStuff;
-				
-				float fa = (float) (( fB2Line5 - (fMass2 * 9.8) )/(fMass1 + fMass2));
-				float fTTotal = (float) ((fMass2 * fCoefficient)+ (fMass2 * 9.8));
 				//computations na nasa terminal
 				System.out.printf("B1\nT - Fg = ma\nT - mg = ma\nT - (%.2f)(9.8) = %.2f a", fMass2, fMass2);
 				System.out.printf("\nT - %.2f = %.2f a", (fMass2 * 9.8), fMass2);
-				
-				System.out.printf("\n\nFn - Fgy = 0\nFn = mg Sin %.2f\nFn = %.2f (9.8) Sin %.2f", fToUseAngle, fMass1, fToUseAngle);
-				System.out.printf("\nFn = %.2f", fFn);
-				
-				System.out.printf("\n\nB2\nFgx - T - Ff = ma\nmg Cos %.0f - T - (%.2f)Fn = ma", fToUseAngle,fCoefficient);
+				System.out.printf("\n\nB2\nFgx - T - Ff = ma\nmg Cos %.0f - T - (%.2f)Fn = ma\n", fToUseAngle,fCoefficient);
 				System.out.printf("\n%.2f(9.8) Cos %.0f - T (%.2f)(%.2f) = %.2f a", fMass1, fToUseAngle, fCoefficient, fFn, fMass1);
-				System.out.printf("\n%.2f - T  %.2f = %.2f a", fB2Line4, fCosStuff, fMass1 );
-				System.out.printf("\n- T + (%.2f) = %.2f a", fB2Line5, fMass1 );
-				
-				System.out.printf("\n\n T - %.2f = %.2f a", (fMass2 * 9.8), fMass2 );
-				System.out.printf("\n-T + %.2f = %.2f a", fB2Line5, fMass1 );
-				System.out.printf("\n________________________" );
-				System.out.printf("\n     %.2f = %.2f a", ( fB2Line5 - (fMass2 * 9.8) ), (fMass1 + fMass2));
-				System.out.printf("\na = %.2f m/s^2", fa);
-				
-				System.out.printf("\nT - %.2f = %.2f (%.2f)\nT = %.2f + %.2f", (fMass2 * 9.8), fMass2, fCoefficient, (fMass2 * fCoefficient), (fMass2 * 9.8) );
-				System.out.printf("\nT = %.2f", fTTotal);
-				
 				
 			}
 		});
@@ -246,8 +283,7 @@ public class ProbTwo extends JFrame {
 		
 		
 		
-		//GET VALUES
-		//textFieldP2_Angle.getText();
+	
 
 		
 		
