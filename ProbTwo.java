@@ -1,40 +1,16 @@
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
-
 import java.awt.Font;
-
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.UIManager;
-import javax.swing.JSplitPane;
-import javax.swing.JToolBar;
 import javax.swing.JMenu;
-import javax.swing.JSeparator;
-
-import java.awt.Color;
-
-import javax.swing.JPopupMenu;
-
-import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.SystemColor;
-
-import javax.swing.SwingConstants;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-
-import javax.swing.Box;
-import javax.swing.JTextPane;
-import javax.swing.JScrollBar;
-import javax.swing.DropMode;
 import javax.swing.JMenuBar;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
@@ -203,19 +179,41 @@ public class ProbTwo extends JFrame {
 				
 				String STime = textFieldP2_Time.getText();
 				float fTime = Float.parseFloat(STime);
-				System.out.println("coefficient of friction = " + fTime);
+				System.out.println("time = " + fTime);
 				
 				float fFn = (float) (fMass1 * 9.8 * Math.sin(Math.toRadians(fToUseAngle)));
+				float fTest = (float) Math.cos(Math.toRadians(fToUseAngle));
+				System.out.println(fTest);
+				System.out.println(fCoefficient * fFn);
 				
-				//System.out.println(fToUseAngle);
-				//System.out.println(Math.sin(fToUseAngle));
-				//System.out.println(fFn);
+				float fCosStuff = fTest - (fCoefficient * fFn);
 				
+				float fB2Line4 = (float) (fMass1 * 9.8) * fTest;
+				float fB2Line5 = fB2Line4 + fCosStuff;
+				
+				float fa = (float) (( fB2Line5 - (fMass2 * 9.8) )/(fMass1 + fMass2));
+				float fTTotal = (float) ((fMass2 * fCoefficient)+ (fMass2 * 9.8));
 				//computations na nasa terminal
 				System.out.printf("B1\nT - Fg = ma\nT - mg = ma\nT - (%.2f)(9.8) = %.2f a", fMass2, fMass2);
 				System.out.printf("\nT - %.2f = %.2f a", (fMass2 * 9.8), fMass2);
-				System.out.printf("\n\nB2\nFgx - T - Ff = ma\nmg Cos %.0f - T - (%.2f)Fn = ma\n", fToUseAngle,fCoefficient);
+				
+				System.out.printf("\n\nFn - Fgy = 0\nFn = mg Sin %.2f\nFn = %.2f (9.8) Sin %.2f", fToUseAngle, fMass1, fToUseAngle);
+				System.out.printf("\nFn = %.2f", fFn);
+				
+				System.out.printf("\n\nB2\nFgx - T - Ff = ma\nmg Cos %.0f - T - (%.2f)Fn = ma", fToUseAngle,fCoefficient);
 				System.out.printf("\n%.2f(9.8) Cos %.0f - T (%.2f)(%.2f) = %.2f a", fMass1, fToUseAngle, fCoefficient, fFn, fMass1);
+				System.out.printf("\n%.2f - T  %.2f = %.2f a", fB2Line4, fCosStuff, fMass1 );
+				System.out.printf("\n- T + (%.2f) = %.2f a", fB2Line5, fMass1 );
+				
+				System.out.printf("\n\n T - %.2f = %.2f a", (fMass2 * 9.8), fMass2 );
+				System.out.printf("\n-T + %.2f = %.2f a", fB2Line5, fMass1 );
+				System.out.printf("\n________________________" );
+				System.out.printf("\n     %.2f = %.2f a", ( fB2Line5 - (fMass2 * 9.8) ), (fMass1 + fMass2));
+				System.out.printf("\na = %.2f m/s^2", fa);
+				
+				System.out.printf("\nT - %.2f = %.2f (%.2f)\nT = %.2f + %.2f", (fMass2 * 9.8), fMass2, fCoefficient, (fMass2 * fCoefficient), (fMass2 * 9.8) );
+				System.out.printf("\nT = %.2f", fTTotal);
+				
 				
 			}
 		});
@@ -248,7 +246,8 @@ public class ProbTwo extends JFrame {
 		
 		
 		
-	
+		//GET VALUES
+		//textFieldP2_Angle.getText();
 
 		
 		
