@@ -1,4 +1,4 @@
-import java.awt.BorderLayout;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -8,34 +8,22 @@ import javax.swing.JLabel;
 
 import java.awt.Font;
 
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
+
 import javax.swing.JButton;
 import javax.swing.UIManager;
-import javax.swing.JSplitPane;
-import javax.swing.JToolBar;
-import javax.swing.JMenu;
+
 import javax.swing.JSeparator;
 
 import java.awt.Color;
 
-import javax.swing.JPopupMenu;
 
-import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.SystemColor;
 
 import javax.swing.SwingConstants;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
-import javax.swing.Box;
-import javax.swing.JTextPane;
-import javax.swing.JScrollBar;
-import javax.swing.DropMode;
-
 
 public class Menu extends JFrame {
 
@@ -195,7 +183,30 @@ public class Menu extends JFrame {
 		labelApplication.setBounds(30, 147, 112, 16);
 		contentPane.add(labelApplication);
 		
+		JButton buttonTerms = new JButton("Terms");
+		buttonTerms.setHorizontalAlignment(SwingConstants.LEFT);
+		buttonTerms.setFont(new Font("Lucida Sans Typewriter", Font.PLAIN, 13));
+		buttonTerms.setBounds(94, 362, 120, 23);
+		contentPane.add(buttonTerms);
+		
+		buttonTerms.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try{
+					boolean value = true;
+					
+					if( value == true){
+						Menu.disappear();
+						//contentPane.setVisible(false);
+						
+						//Menu menu = new Menu();
+						//menu.dispose();
+						//menu.setVisible(false);
+						Terms.appear();
+						}
+					}catch(Exception f){					
+			}
+			}
+		});
 		
 	}
-
 }
