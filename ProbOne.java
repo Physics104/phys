@@ -194,22 +194,22 @@ public class ProbOne extends JFrame {
 				float fv = (float) Math.sqrt(fprev);
 				//System.out.println("Angle = " + fAngle);
 				
-				String Scoefficient = textFieldP2_coefficient.getText();
+			/*	String Scoefficient = textFieldP2_coefficient.getText();
 				float fCoefficient = Float.parseFloat(Scoefficient);
 				//System.out.println("coefficient of friction = " + fCoefficient);
 				
 				String STime = textFieldP2_Time.getText();
 				float fTime = Float.parseFloat(STime);
 				//System.out.println("coefficient of friction = " + fTime);
-				
+			*/	
 				//Reqd
-				System.out.println("Equation: ΣFnet = ma");
+				System.out.println("Equation: EFnet = ma");
 				//computations na nasa terminal
-				System.out.println("ΣFnet = ma\nFgx = ma\nmg Sin() = ma\ng Sin() = a");
+				System.out.println("EFnet = ma\nFgx = ma\nmg Sin() = ma\ng Sin() = a");
 				System.out.printf("(9.8) Sin %.2f = a", fAngle);
 				System.out.printf("\na = %.2f m/s^2", fa);
-				System.out.println("\n\nV2 = Vo2 2a ΔX\nv2 = 2a ΔX\nv =  √2aΔX ");
-				System.out.printf("v = √2 (%.2f) (%.2f)", fa, fLength );
+				System.out.println("\n\nV2 = Vo2 2a DeltaX\nv2 = 2a DeltaX\nv =  Sqrt(2aDeltaX) ");
+				System.out.printf("v = Sqrt(2) (%.2f) (%.2f)", fa, fLength );
 				System.out.printf("v = %.2f m/s", fv);
 				
 				
