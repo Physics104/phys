@@ -1,17 +1,10 @@
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
-
-import java.awt.SystemColor;
-
-import javax.swing.UIManager;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
+import javax.swing.ImageIcon;
 
 
 public class Start  {
@@ -50,6 +43,7 @@ public class Start  {
 		getFrame().setLocationRelativeTo(null);
 		
 		JButton btnStartButton = new JButton("Start");
+		btnStartButton.setIcon(new ImageIcon(Start.class.getResource("/com/sun/java/swing/plaf/windows/icons/HomeFolder.gif")));
 		btnStartButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try{
@@ -67,14 +61,11 @@ public class Start  {
 			}
 		}
 		});
-		btnStartButton.setForeground(UIManager.getColor("Button.focus"));
-		btnStartButton.setBackground(UIManager.getColor("Button.background"));
+		btnStartButton.setForeground(new Color(255, 250, 250));
+		btnStartButton.setBackground(new Color(255, 69, 0));
 		btnStartButton.setBounds(163, 283, 156, 23);
 		getFrame().getContentPane().add(btnStartButton);
 		
-		JButton btnInfoButton = new JButton("Information");
-		btnInfoButton.setBounds(163, 320, 156, 23);
-		getFrame().getContentPane().add(btnInfoButton);
 	}
 
 	public JFrame getFrame() {
