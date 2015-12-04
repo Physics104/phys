@@ -22,6 +22,7 @@ import javax.swing.JPopupMenu;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.PrintStream;
 import java.awt.SystemColor;
 
 import javax.swing.SwingConstants;
@@ -47,6 +48,8 @@ public class ProbOne extends JFrame {
 	private JTextField textFieldP2_coefficient;
 	private JLabel lblP2_12;
 	private JTextField textFieldP2_Time;
+	
+	private PrintStream standardOut;
 
 	/**
 	 * Launch the application.
@@ -98,11 +101,8 @@ public class ProbOne extends JFrame {
 						
 						if( value == true){
 							ProbOne.disappear();
-							contentPane.setVisible(false);
-							
-							//Menu menu = new Menu();
-							//menu.dispose();
-							//menu.setVisible(false);
+							dispose();
+
 							Menu.appear();
 							}
 						}
@@ -189,6 +189,11 @@ public class ProbOne extends JFrame {
 		textArea.setBounds(53, 218, 719, 279);
 		contentPane.add(textArea);
 		
+		PrintStream printStream = new PrintStream(new CustomOutputStream(textArea));
+		standardOut = System.out;
+		System.setOut(printStream);
+		System.setErr(printStream);
+		
 		JButton btnSolve = new JButton("Solve");
 		btnSolve.addMouseListener(new MouseAdapter() {
 			@Override
@@ -205,8 +210,8 @@ public class ProbOne extends JFrame {
 				float fAngle = Float.parseFloat(SAngle);
 				System.out.println("Angle = " + fAngle);
 				
-				String Scoefficient = textFieldP2_coefficient.getText();
-				float fCoefficient = Float.parseFloat(Scoefficient);
+				String SCoefficient = textFieldP2_coefficient.getText();
+				float fCoefficient = Float.parseFloat(SCoefficient);
 				System.out.println("coefficient of friction = " + fCoefficient);
 				
 				String STime = textFieldP2_Time.getText();
