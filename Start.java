@@ -52,8 +52,7 @@ public class Start  {
 					if( value == true){
 						getFrame().dispose();
 						
-						Menu menu = new Menu();
-						menu.appear();
+						Menu.appear();
 						}
 					}catch(Exception f){
 						
