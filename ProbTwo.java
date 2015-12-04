@@ -7,6 +7,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 
 import java.awt.Font;
+import java.awt.Frame;
 
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
@@ -58,7 +59,6 @@ public class ProbTwo extends JFrame {
 	private JTextField textFieldP2_coefficient;
 	private JLabel lblP2_12;
 	private JTextField textFieldP2_Time;
-	private JTextArea textArea = new JTextArea();
 	
 	private PrintStream standardOut;
 	
@@ -95,7 +95,7 @@ public class ProbTwo extends JFrame {
 	 */
 	public void initialize() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 850, 600);
+		setBounds(100, 100, 599, 600);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -109,11 +109,8 @@ public class ProbTwo extends JFrame {
 						
 						if( value == true){
 							ProbTwo.disappear();
-							//contentPane.setVisible(false);
-							
-							//Menu menu = new Menu();
-							//menu.dispose();
-							//menu.setVisible(false);
+							contentPane.setVisible(false);
+							dispose();
 							Menu.appear();
 							}
 						}
@@ -206,7 +203,7 @@ public class ProbTwo extends JFrame {
 		JTextArea textArea = new JTextArea();
 		textArea.setBackground(UIManager.getColor("Button.background"));
 		textArea.setFont(new Font("Monospaced", Font.PLAIN, 11));
-		textArea.setBounds(53, 218, 719, 279);
+		textArea.setBounds(42, 218, 504, 279);
 		contentPane.add(textArea);
 		
 		PrintStream printStream = new PrintStream(new CustomOutputStream(textArea));
