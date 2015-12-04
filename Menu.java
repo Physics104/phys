@@ -1,4 +1,4 @@
-
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -8,25 +8,41 @@ import javax.swing.JLabel;
 
 import java.awt.Font;
 
-
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.UIManager;
-
+import javax.swing.JSplitPane;
+import javax.swing.JToolBar;
+import javax.swing.JMenu;
 import javax.swing.JSeparator;
 
 import java.awt.Color;
 
+import javax.swing.JPopupMenu;
 
+import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.SystemColor;
 
 import javax.swing.SwingConstants;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+import javax.swing.Box;
+import javax.swing.JTextPane;
+import javax.swing.JScrollBar;
+import javax.swing.DropMode;
+
+
 public class Menu extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
 	/**
@@ -91,11 +107,8 @@ public class Menu extends JFrame {
 					
 					if( value == true){
 						Menu.disappear();
-						//contentPane.setVisible(false);
-						
-						//Menu menu = new Menu();
-						//menu.dispose();
-						//menu.setVisible(false);
+						contentPane.setVisible(false);
+						dispose();
 						ProbOne.appear();
 						}
 					}catch(Exception f){					
@@ -115,8 +128,8 @@ public class Menu extends JFrame {
 					
 					if( value == true){
 						Menu.disappear();
-						//contentPane.setVisible(false);
-						
+						contentPane.setVisible(false);
+						dispose();
 						//Menu menu = new Menu();
 						//menu.dispose();
 						//menu.setVisible(false);
@@ -130,16 +143,6 @@ public class Menu extends JFrame {
 		buttonProblem2.setFont(new Font("Lucida Sans Typewriter", Font.PLAIN, 13));
 		buttonProblem2.setBounds(94, 294, 120, 23);
 		contentPane.add(buttonProblem2);
-		
-		JButton btnConversionCalculator = new JButton("Conversion");
-		btnConversionCalculator.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		btnConversionCalculator.setFont(new Font("Lucida Sans Typewriter", Font.PLAIN, 13));
-		btnConversionCalculator.setHorizontalAlignment(SwingConstants.LEFT);
-		btnConversionCalculator.setBounds(94, 328, 120, 23);
-		contentPane.add(btnConversionCalculator);
 		
 		JSeparator separator_2 = new JSeparator();
 		separator_2.setBounds(10, 247, 204, 2);
@@ -177,16 +180,11 @@ public class Menu extends JFrame {
 		labelEquation.setFont(new Font("Lucida Sans Typewriter", Font.PLAIN, 14));
 		labelEquation.setBounds(30, 120, 80, 16);
 		contentPane.add(labelEquation);
-		
-		JLabel labelApplication = new JLabel("Application");
-		labelApplication.setFont(new Font("Lucida Sans Typewriter", Font.PLAIN, 14));
-		labelApplication.setBounds(30, 147, 112, 16);
-		contentPane.add(labelApplication);
-		
+
 		JButton buttonTerms = new JButton("Terms");
 		buttonTerms.setHorizontalAlignment(SwingConstants.LEFT);
 		buttonTerms.setFont(new Font("Lucida Sans Typewriter", Font.PLAIN, 13));
-		buttonTerms.setBounds(94, 362, 120, 23);
+		buttonTerms.setBounds(94, 327, 120, 23);
 		contentPane.add(buttonTerms);
 		
 		buttonTerms.addActionListener(new ActionListener() {
@@ -196,11 +194,8 @@ public class Menu extends JFrame {
 					
 					if( value == true){
 						Menu.disappear();
-						//contentPane.setVisible(false);
-						
-						//Menu menu = new Menu();
-						//menu.dispose();
-						//menu.setVisible(false);
+						contentPane.setVisible(false);
+						dispose();
 						Terms.appear();
 						}
 					}catch(Exception f){					
@@ -208,5 +203,26 @@ public class Menu extends JFrame {
 			}
 		});
 		
+		JButton buttonReference = new JButton("References");
+		buttonReference.setHorizontalAlignment(SwingConstants.LEFT);
+		buttonReference.setFont(new Font("Lucida Sans Typewriter", Font.PLAIN, 13));
+		buttonReference.setBounds(94, 362, 120, 23);
+		contentPane.add(buttonReference);
+		
+		buttonReference.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try{
+					boolean value = true;
+					
+					if( value == true){
+						Menu.disappear();
+						contentPane.setVisible(false);
+						dispose();
+						References.appear();
+						}
+					}catch(Exception f){					
+			}
+			}
+		});
 	}
 }
