@@ -173,6 +173,54 @@ public class ProbOne extends JFrame {
 		lblP2_10.setBounds(42, 110, 429, 14);
 		contentPane.add(lblP2_10);
 		
+		
+		JButton btnSolve = new JButton("Solve");
+		btnSolve.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				String SM1 = m1.getText();
+				float fM1 = Float.parseFloat(SM1);
+				//System.out.println("Mass = " + fM1);
+				
+				String SLength = length1.getText();
+				float fLength = Float.parseFloat(SLength);
+				//System.out.println("Length = " + fLength1);
+				
+				String SAngle = angle.getText();
+				float fAngle = Float.parseFloat(SAngle);
+				float fAngleUse = (float) Math.sin(Math.toRadians(fAngle));
+				float fa = (float) (fAngleUse * (9.8));
+				float fprev = 2 * fa * fLength;
+				float fv = (float) Math.sqrt(fprev);
+				//System.out.println("Angle = " + fAngle);
+				
+				String Scoefficient = textFieldP2_coefficient.getText();
+				float fCoefficient = Float.parseFloat(Scoefficient);
+				//System.out.println("coefficient of friction = " + fCoefficient);
+				
+				String STime = textFieldP2_Time.getText();
+				float fTime = Float.parseFloat(STime);
+				//System.out.println("coefficient of friction = " + fTime);
+				
+				//Reqd
+				System.out.println("Equation: ΣFnet = ma");
+				//computations na nasa terminal
+				System.out.println("ΣFnet = ma\nFgx = ma\nmg Sin() = ma\ng Sin() = a");
+				System.out.printf("(9.8) Sin %.2f = a", fAngle);
+				System.out.printf("\na = %.2f m/s^2", fa);
+				System.out.println("\n\nV2 = Vo2 2a ΔX\nv2 = 2a ΔX\nv =  √2aΔX ");
+				System.out.printf("v = √2 (%.2f) (%.2f)", fa, fLength );
+				System.out.printf("v = %.2f m/s", fv);
+				
+				
+			}
+		});
+		
+		btnSolve.setBackground(UIManager.getColor("Button.highlight"));
+		btnSolve.setBounds(42, 153, 89, 23);
+		contentPane.add(btnSolve);
+		
+		
 		JLabel lblRequiredAcceleration = new JLabel("Required: Acceleration");
 		lblRequiredAcceleration.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblRequiredAcceleration.setBounds(43, 181, 141, 14);
@@ -194,39 +242,7 @@ public class ProbOne extends JFrame {
 		System.setOut(printStream);
 		System.setErr(printStream);
 		
-		JButton btnSolve = new JButton("Solve");
-		btnSolve.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				String SM1 = m1.getText();
-				float fM1 = Float.parseFloat(SM1);
-				System.out.println("Mass = " + fM1);
-				
-				String SLength1 = length1.getText();
-				float fLength1 = Float.parseFloat(SLength1);
-				System.out.println("Length = " + fLength1);
-				
-				String SAngle = angle.getText();
-				float fAngle = Float.parseFloat(SAngle);
-				System.out.println("Angle = " + fAngle);
-				
-				String SCoefficient = textFieldP2_coefficient.getText();
-				float fCoefficient = Float.parseFloat(SCoefficient);
-				System.out.println("coefficient of friction = " + fCoefficient);
-				
-				String STime = textFieldP2_Time.getText();
-				float fTime = Float.parseFloat(STime);
-				System.out.println("coefficient of friction = " + fTime);
-				
-				//computations na nasa terminal
-				
-				
-			}
-		});
-		
-		btnSolve.setBackground(UIManager.getColor("Button.highlight"));
-		btnSolve.setBounds(42, 153, 89, 23);
-		contentPane.add(btnSolve);
+
 		
 	}
 }
