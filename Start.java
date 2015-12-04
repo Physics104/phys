@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 
 public class Start  {
@@ -37,7 +38,7 @@ public class Start  {
 	 */
 	public void initialize() {
 		setFrame(new JFrame());
-		getFrame().setBounds(100, 100, 500, 500);
+		getFrame().setBounds(100, 100, 736, 435);
 		getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getFrame().getContentPane().setLayout(null);
 		getFrame().setLocationRelativeTo(null);
@@ -52,6 +53,7 @@ public class Start  {
 					if( value == true){
 						getFrame().dispose();
 						
+						//Menu menu = new Menu();
 						Menu.appear();
 						}
 					}catch(Exception f){
@@ -62,8 +64,13 @@ public class Start  {
 		});
 		btnStartButton.setForeground(new Color(255, 250, 250));
 		btnStartButton.setBackground(new Color(255, 69, 0));
-		btnStartButton.setBounds(163, 283, 156, 23);
+		btnStartButton.setBounds(283, 187, 156, 23);
 		getFrame().getContentPane().add(btnStartButton);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(Start.class.getResource("/resources/Pk_YgH.gif")));
+		lblNewLabel.setBounds(0, 0, 714, 379);
+		frame.getContentPane().add(lblNewLabel);
 		
 	}
 
